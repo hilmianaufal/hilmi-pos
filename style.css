@@ -1,0 +1,60 @@
+.login-page {
+    background-image: url('asset/img/login.jfif');
+    background-size: cover;
+    background-position: center center;
+    
+}
+
+.slide-down{
+    animation: slide-down 1.5s;
+}
+
+@keyframes slide-down{
+    from{
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+body {
+   background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.loading {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    color: #999;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.progress-bar {
+    width: 406px;
+    height: 10px;
+    background-color: #111;
+    border-radius: 7px;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.progress {
+    width: 10px;
+    height: 5px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,31,255,1) 0%, rgba(158,255,246,1) 100%, rgba(0,212,255,1) 100%);
+    border-radius: 7px;
+}
