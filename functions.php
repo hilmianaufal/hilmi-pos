@@ -1,6 +1,6 @@
 <?php 
 
-function uploadImage($url = null){
+function uploadImage($url = null, $name = null){
 
     $namafile = $_FILES['image']['name'];
     $ukuran = $_FILES['image']['size'];
@@ -42,8 +42,13 @@ function uploadImage($url = null){
             return false;
         }
     }
+            if ($name != '') {
+                
+                $namaFileBaru = $name . '.' . $extensiGambar;
+            }else {
 
-    $namaFileBaru = rand(10, 1000) . '-' . $namafile;
+                $namaFileBaru = rand(10, 1000) . '-' . $extensiGambar;
+            }
 
     move_uploaded_file($tmp, '../asset/img/' . $namaFileBaru);
     return $namaFileBaru;
@@ -151,7 +156,7 @@ function getDataCustomer ($sql){
 }
 
 function menuMasterCustomer (){
-    if(userMenu() == 'customer'){
+    if(userMenu() == 'customer' or userMenu() == 'barang'){
         $result = 'menu-is-opening menu-open';
     }else {
         $result = null;
@@ -163,5 +168,51 @@ function deleteCustomer ($id){
     global $koneksi;
 
     mysqli_query($koneksi, "DELETE FROM tbl_customer WHERE id_customer = $id");
+    return mysqli_affected_rows($koneksi);
+}
+function getDataBarang($sql){
+    global $koneksi;
+    $result = mysqli_query($koneksi,$sql);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+function menuBarang (){
+    if (userMenu() == 'barang') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+function menuCustomer (){
+    if (userMenu() == 'customer') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+function menuSupplier (){
+    if (userMenu() == 'supplier') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+
+function delBarang($id, $foto){
+    global $koneksi;
+
+    $sqlDel = "DELETE FROM tbl_barang WHERE id_barang= '$id'";
+    mysqli_query($koneksi, $sqlDel);
+
+    if ($foto != 'barang.png') {
+        unlink('../asset/img/' . $foto);
+    }
     return mysqli_affected_rows($koneksi);
 }

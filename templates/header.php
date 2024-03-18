@@ -17,4 +17,8 @@
   <link rel="stylesheet" href="<?= $main_url ?>asset/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?= $main_url ?>asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="shortcut icon" href="<?= $main_url ?>asset/img/1.jfif" type="image/x-icon">
+  <!-- jQuery -->
+<script src="<?= $main_url ?>asset/plugins/jquery/jquery.min.js"></script>
+   <!-- SweetAlert2 -->
+   <link rel="stylesheet" href="<?= $main_url ?>asset/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>

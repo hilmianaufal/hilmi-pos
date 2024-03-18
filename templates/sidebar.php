@@ -38,17 +38,17 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?= $main_url?>supplier/supplier.php" class="nav-link">
+              <a href="<?= $main_url?>supplier/supplier.php" class="nav-link <?= menuSupplier() ?>">
                 <i class="far fa-circle nav-icon text-sm"></i><p> Suplier</p>
               </a>
             </li>
             <li class="nav-item ">
-              <a href="<?= $main_url ?>customer/data-customer.php" class="nav-link">
+              <a href="<?= $main_url ?>customer/data-customer.php" class="nav-link <?= menuCustomer() ?>">
                 <i class="far fa-circle nav-icon text-sm"></i><p> Customer</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="<?= $main_url ?>barang/data-barang.php" class="nav-link <?= menuBarang() ?>">
                 <i class="far fa-circle nav-icon text-sm"></i><p> Barang</p>
               </a>
             </li>

@@ -20,8 +20,7 @@
 
 <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="<?= $main_url ?>asset/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="<?= $main_url ?>asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
@@ -34,6 +33,8 @@
 <script src="<?= $main_url ?>asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= $main_url ?>asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="<?= $main_url ?>asset/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?= $main_url ?>asset/plugins/sweetalert2/sweetalert2.min.js"></script>
 
 <script>
   $(function(){
