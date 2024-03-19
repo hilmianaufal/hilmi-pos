@@ -23,6 +23,7 @@ if (isset($_GET['msg'])){
 
 $alert = '';
 
+
 if($msg == 'deleted') {
     $id = $_GET['id'];
     $foto = $_GET['foto'];
@@ -39,7 +40,23 @@ if($msg == 'deleted') {
     </script>";
 }
 }
+if($msg == 'updated') {
+   
+    $alert = "<script>
+            $(document).ready(function(){
+              $(document).Toasts('create',{
+                title : 'Sukses',
+                body : 'Data Barang Berhasil Di Update',
+                position : 'bottomRight',
+                class : 'bg-success',
+                icon : 'fas fa-check-circle', 
+                autohide : true,
+                delay : 5000
+              })
+            });
+    </script>";
 
+}
 
 ?>
  <div class="content-wrapper">

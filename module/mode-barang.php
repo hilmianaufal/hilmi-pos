@@ -59,3 +59,64 @@ function insert($data){
     return mysqli_affected_rows($koneksi);
 
 }
+
+function update($data){
+    global $koneksi;
+    $id = mysqli_real_escape_string($koneksi, $data['kode']);
+    $barcode = mysqli_real_escape_string($koneksi, $data['barcode']);
+    $nama = mysqli_real_escape_string($koneksi, $data['nama']);
+    $satuan = mysqli_real_escape_string($koneksi, $data['satuan']);
+    $harga_beli = mysqli_real_escape_string($koneksi, $data['harga_beli']);
+    $harga_jual = mysqli_real_escape_string($koneksi, $data['harga_jual']);
+    $stock_menimal = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
+    $gbrLama = mysqli_real_escape_string($koneksi, $data['oldImage']);
+    $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
+    
+    $qeuryBarcode = mysqli_query($koneksi,"SELECT * FROM tbl_barang WHERE barcode = '$barcode'");
+    $dataBarang = mysqli_fetch_assoc($qeuryBarcode);
+    $curBarcode = $dataBarang['barcode'];
+
+
+    $cekbarcode = mysqli_query($koneksi, "SELECT * FROM tbl_barang WHERE barcode = '$barcode' ");
+    if ($barcode !== $curBarcode){
+
+        if(mysqli_num_rows($cekbarcode) ){
+            echo "<script>
+                alert('Kode Barcode Sudah Ada, Barang Gagal Di Update');
+            </script>";
+            return false;
+        }
+    }
+
+    if($gambar != ''){
+        $url = "data-barang.php";
+      if ($gbrLama !== 'barang.png'){
+        $gmbrBru = $id; 
+      }else{
+        $gmbrBru = $id. '-' . rand(10,1000);
+      }
+        $gmbrBru = uploadImage(null ,$id);    
+        
+        if($gbrLama != 'barang.png'){
+            @unlink('../asset/img' . $gbrLama);
+        }
+    }else{
+        $gmbrBru = $gbrLama;
+    }
+
+    // gmbr tidak sesuai Validasi
+    mysqli_query($koneksi,"UPDATE tbl_barang SET
+                            barcode = '$barcode',
+                            nama_barang = '$nama',
+                            harga_beli = $harga_beli,
+                            harga_jual = $harga_jual,
+                            satuan = '$satuan',
+                            stock_minimal = $stock_menimal,
+                            gambar = '$gmbrBru' WHERE id_barang = '$id';
+                            ");
+
+    return mysqli_affected_rows($koneksi);
+
+
+
+}

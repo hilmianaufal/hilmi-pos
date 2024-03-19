@@ -31,6 +31,27 @@ if(isset($_GET['msg'])){
 $alert = '';
 
 if(isset($_POST['simpan'])){
+  if($msg != ''){
+
+    if (update($_POST)){
+      echo "
+      <script> 
+      document.location.href = 'data-barang.php?msg=updated';
+      </script>
+      
+      ";
+    }else {
+      echo "
+      <script> 
+      document.location.href = 'data-barang.php';
+      </script>
+      
+      ";
+    }
+
+
+  }else{
+    
     if(insert($_POST)){
         $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <i class="icon fas fa-check"></i>Data Barang Berhasil Di Tambahkan
@@ -39,6 +60,7 @@ if(isset($_POST['simpan'])){
         </button>
       </div>';
     }
+  }
 }
 
 
