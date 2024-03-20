@@ -119,6 +119,7 @@ if($msg == 'updated') {
                   <td class="text-center"><?= number_format( $data['harga_beli'],0,',','.') ?></td>
                   <td><?= number_format( $data['harga_jual'],0,',','.') ?></td>
                   <td>
+                    <button class="btn btn-secondary" type="button" id="btnCetakBarcode" data-barcode="<?= $data['barcode']  ?>" data-nama="<?= $data['nama_barang'] ?>" title="cetak barcode"><i class="fas fa-barcode"></i></button>
                     <a href="form-barang.php?id=<?= $data['id_barang'] ?>&msg=editing" class="btn btn-warning" title="Edit Data"><i class="fas fa-user-edit"></i></a>
                     <a href="?id=<?=$data['id_barang'] ?>&foto=<?= $data['gambar'] ?>&msg=deleted" class="btn btn-danger" title="Edit Data" onclick="confirm('Apakah Yakin Ingin Menghapus User ini ?')"><i class="fas fa-trash"></i></a>
                 </td>
@@ -133,7 +134,73 @@ if($msg == 'updated') {
       </div>
 
     </section>
-  
+  <!-- modal untuk Cetak Barcode -->
+    <div class="modal fade" id="mdlCetakBarcode">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Cetak Barcode</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                  <label for="namaBrang" class="col-sm-3 col-form-label">Nama Barang</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="namaBrang" readonly>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="barcode" class="col-sm-3 col-form-label">Barcode</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="barcode" readonly>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="jmlCetak" class="col-sm-3 col-form-label">Jumlah Cetak</label>
+                  <div class="col-sm-9">
+                    <input type="number" min="1" max ="10" value="1" title="Maximal 10" id="jmlCetak" class="form-control">
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="preview"> <i class="fas fa-print"></i> Cetak</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+<script>
+
+$(document).ready(function(){
+    $(document).on('click', '#btnCetakBarcode', function(){
+      $('#mdlCetakBarcode').modal('show');
+      let barcode = $(this).data('barcode');
+      let nama = $(this).data('nama');
+      $('#namaBrang').val(nama);
+      $('#barcode').val(barcode);
+    })
+})
+
+$(document).on('click','#preview', function(){
+  let barcode = $('#barcode').val()
+  let jmlCetak = $('#jmlCetak').val()
+  if(jmlCetak > 0 && jmlCetak <= 10){
+    window.open('../report/r-barcode.php?barcode=' + barcode + '&jmlCetak=' + jmlCetak  )
+  }
+})
+
+</script>
+
+
+
+
+
 
 <?php 
 require_once '../templates/footer.php';

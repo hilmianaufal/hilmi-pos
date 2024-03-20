@@ -7,7 +7,7 @@ function uploadImage($url = null, $name = null){
     $tmp = $_FILES['image']['tmp_name'];
     // validasi file Gambar yang boleh di upload
 
-    $extensiGambarValid = ['jpg','jpeg', 'png', 'gif']; 
+    $extensiGambarValid = ['jpg','jpeg', 'png', 'gif', 'jfif']; 
     $extensiGambar = explode('.',$namafile);
     $extensiGambar = strtolower(end($extensiGambar));
 

@@ -72,7 +72,7 @@ function update($data){
     $gbrLama = mysqli_real_escape_string($koneksi, $data['oldImage']);
     $gambar = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
     
-    $qeuryBarcode = mysqli_query($koneksi,"SELECT * FROM tbl_barang WHERE barcode = '$barcode'");
+    $qeuryBarcode = mysqli_query($koneksi,"SELECT * FROM tbl_barang WHERE id_barang = '$id'");
     $dataBarang = mysqli_fetch_assoc($qeuryBarcode);
     $curBarcode = $dataBarang['barcode'];
 
@@ -95,7 +95,7 @@ function update($data){
       }else{
         $gmbrBru = $id. '-' . rand(10,1000);
       }
-        $gmbrBru = uploadImage(null ,$id);    
+        $gmbrBru = uploadImage($url ,$gmbrBru);    
         
         if($gbrLama != 'barang.png'){
             @unlink('../asset/img' . $gbrLama);
