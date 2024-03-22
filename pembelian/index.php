@@ -243,9 +243,10 @@ $no_beli = generateNo();
 
 
     <script>
-      let pilihbrg = document.getElementById('kodeBrg')
+      let pilihbrg = document.getElementById('kodeBrg');
+      let tgl = document.getElementById('tglNota');
       pilihbrg.addEventListener('change', function(){
-        document.location.href = this.options[this.selectedIndex].value
+        document.location.href = this.options[this.selectedIndex].value + '&tgl=' + tgl.value;
       })
 
       let qty = document.getElementById('qty')
