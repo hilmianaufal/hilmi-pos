@@ -61,6 +61,7 @@ if($msg == 'deleted'){
 
   deleteBrg($idBrg, $idBeli,$qty);
   echo "<script> 
+
   document.location = '?tgl=$tgl';
 
   </script>";
@@ -212,7 +213,7 @@ $no_beli = generateNo();
                   <div class="row">
                      <div class="col-lg-6 p-2">
                       <div class="form-group row mb-2">
-                       <label for="" class="col-sm-3 col-form-label col-form-label-sm">Suplier</label>
+                       <label for="" class="col-sm-3 col-form-label col-form-label">Suplier</label>
                        <div class="col-sm-9">
                          <select name="supplier" id="suplier" class="form-control form-control-sm">
                            <option value="">-- Pilih Suplier --</option>
