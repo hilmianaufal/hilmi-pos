@@ -64,7 +64,7 @@
           </li>
           <li class="nav-header">Report</li>
           <li class="nav-item">
-            <a href="" class="nav-link"><i class="nav-icon fas fa-chart-line text-sm"></i> <p> Laporan Pembelian</p></a>
+            <a href="<?= $main_url ?>laporan-pembelian" class="nav-link"><i class="nav-icon fas fa-chart-line text-sm"></i> <p> Laporan Pembelian</p></a>
           </li>
           <li class="nav-item">
             <a href="" class="nav-link"><i class="nav-icon fas fa-chart-pie text-sm"></i> <p> Laporan Pejualan</p></a>
