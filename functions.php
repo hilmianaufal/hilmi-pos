@@ -224,3 +224,59 @@ function in_date ($tgl){
 
     return $tg . "-" . $bln . "-" . $thn;
 }
+
+function laporanStok (){
+    if (userMenu() == 'laporan-stok') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+
+function laporanBeli (){
+    if (userMenu() == 'laporan-pembelian') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+
+function laporanJual (){
+    if (userMenu() == 'laporan-penjualan') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+
+function pembelian (){
+    if (userMenu() == 'pembelian') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+
+function penjualan (){
+    if (userMenu() == 'penjualan') {
+        $result = 'active';
+    }else {
+        $result = null;
+    }
+    return $result;
+}
+
+function omset(){
+    global $koneksi;
+
+    $queryOmset = mysqli_query($koneksi,"SELECT sum(total) as omset FROM tbl_jual_head");
+    $data = mysqli_fetch_assoc($queryOmset);
+    $omset = number_format($data['omset'],0,',','.');
+
+    return $omset;
+
+}

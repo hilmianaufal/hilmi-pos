@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= $main_url ?>asset/dist/css/adminlte.min.css">
   <link rel="shortcut icon" href="<?= $main_url ?>asset/img/1.jfif" type="image/x-icon">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../sty.css">
 </head>
 <body class="hold-transition login-page" >
 <div class="login-box slide-down" style="margin-top: -70px">

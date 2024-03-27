@@ -57,20 +57,20 @@
           <?php } ?>
           <li class="nav-header">Transaksi</li>
           <li class="nav-item">
-            <a href="<?= $main_url ?>pembelian/index.php" class="nav-link"><i class="nav-icon fas fa-shopping-cart text-sm"></i> <p> Pembelian</p></a>
+            <a href="<?= $main_url ?>pembelian/index.php" class="nav-link <?= pembelian() ?>"><i class="nav-icon fas fa-shopping-cart text-sm"></i> <p> Pembelian</p></a>
           </li>
           <li class="nav-item">
-            <a href="<?= $main_url  ?>penjualan" class="nav-link"><i class="nav-icon fas fa-file-invoice text-sm"></i> <p> Penjualan</p></a>
+            <a href="<?= $main_url  ?>penjualan" class="nav-link <?= penjualan() ?>"><i class="nav-icon fas fa-file-invoice text-sm"></i> <p> Penjualan</p></a>
           </li>
           <li class="nav-header">Report</li>
           <li class="nav-item">
-            <a href="<?= $main_url ?>laporan-pembelian" class="nav-link"><i class="nav-icon fas fa-chart-line text-sm"></i> <p> Laporan Pembelian</p></a>
+            <a href="<?= $main_url ?>laporan-pembelian" class="nav-link <?= laporanBeli() ?>"><i class="nav-icon fas fa-chart-line text-sm"></i> <p> Laporan Pembelian</p></a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link"><i class="nav-icon fas fa-chart-pie text-sm"></i> <p> Laporan Pejualan</p></a>
+            <a href="<?= $main_url ?>laporan-penjualan" class="nav-link <?= laporanJual() ?>"><i class="nav-icon fas fa-chart-pie text-sm"></i> <p> Laporan Pejualan</p></a>
           </li>
-          <li class="nav-item">
-            <a href="" class="nav-link"><i class="nav-icon fas fa-warehouse text-sm"></i> <p> Laporan Stock</p></a>
+          <li class="nav-item"> 
+            <a href="<?= $main_url ?>laporan-stok" class="nav-link <?= laporanStok() ?>"><i class="nav-icon fas fa-warehouse text-sm"></i> <p> Laporan Stock</p></a>
           </li>
           <?php if (userLogin()['level'] == 1) {
             ?>
